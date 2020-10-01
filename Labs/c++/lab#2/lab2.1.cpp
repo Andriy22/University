@@ -6,32 +6,46 @@
 using namespace std;
 int main()
 {
-    double a, b;
-    char key = ' ';
-    
-    while (key != 'e')
-    {
-        system("cls");
 
-        cout << "Input a: ";
-        cin >> a;
-        cout << "Input b: ";
-        cin >> b;
+        float a, b, answer;
+        char key = ' ';
 
-        if (b == 0)
-            cout << "Answer: " << 0 << endl;
-        else
-            if (a > b)
-                cout << "Answer: " << pow(a, 2) / pow(b, 2) << endl;
+        while (key != 'e')
+        {
+            system("cls");
+
+            cout << "Input a: ";
+            if (scanf_s("%f", &a) != 1) {
+                cout << "input a is wrong!" << endl << endl;
+                while (getchar() != '\n') {}
+                _getch();
+                continue; 
+            }
+            cout << "Input b: ";
+            if (scanf_s("%f", &b) != 1) {
+                cout << "input b is wrong!" << endl << endl;
+                while (getchar() != '\n') {}
+                _getch();
+                continue;
+            }
+
+            if (b == 0)
+                answer = 0;
             else
-                if (a < b)
-                    cout << "Answer: " << pow(b, 2) - pow(a, 2) << endl;
+                if (a > b)
+                    answer = pow(a, 2) / pow(b, 2);
                 else
-                    if (a == b)
-                        cout << "Answer: " << 1 << endl;
+                    if (a < b)
+                        answer = pow(b, 2) - pow(a, 2);
+                    else
+                        if (a == b)
+                            answer = 1;
+            cout << "Answer: " << answer << endl << endl;;
 
-        cout << "Press E to exit or any key to restart." << endl;
-        key = _getch();
-    }
+          
+
+            cout << "Press E to exit or any key to restart." << endl;
+            key = _getch();
+        }
 
 }
